@@ -1,0 +1,11 @@
+{
+	"parent": "stairsbutchairs:block/template/chair",
+	"textures": {
+		"particle": "block/oak_planks",
+		"back": "stairsbutchairs:block/oak_chair_back",
+		"bottom": "stairsbutchairs:block/oak_chair_bottom",
+		"front": "stairsbutchairs:block/oak_chair_front",
+		"side": "stairsbutchairs:block/oak_chair_side",
+		"top": "stairsbutchairs:block/oak_chair_top"
+	}
+}

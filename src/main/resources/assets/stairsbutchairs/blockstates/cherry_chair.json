@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "stairsbutchairs:block/cherry_chair"
+        },
+        "facing=east": {
+            "model": "stairsbutchairs:block/cherry_chair",
+            "y": 90
+        },
+        "facing=south": {
+            "model": "stairsbutchairs:block/cherry_chair",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "stairsbutchairs:block/cherry_chair",
+            "y": 270
+        }
+    }
+}

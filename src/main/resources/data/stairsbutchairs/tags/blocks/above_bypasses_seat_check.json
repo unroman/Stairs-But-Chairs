@@ -1,0 +1,23 @@
+{
+    "replace": false,
+    "values": [
+      "#minecraft:trapdoors",
+
+      {
+        "id": "#another_furniture:chairs",
+        "required": false
+      },
+      {
+        "id": "#another_furniture:curtains",
+        "required": false
+      },
+      {
+        "id": "#another_furniture:lattices",
+        "required": false
+      },
+      {
+        "id": "#another_furniture:shutters",
+        "required": false
+      }
+    ]
+}
