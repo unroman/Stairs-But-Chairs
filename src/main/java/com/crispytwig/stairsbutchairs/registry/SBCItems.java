@@ -1,25 +1,28 @@
 package com.crispytwig.stairsbutchairs.registry;
 
 import com.crispytwig.stairsbutchairs.StairsButChairs;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
+@Mod.EventBusSubscriber(modid = StairsButChairs.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class SBCItems {
-    public static final Item OAK_CHAIR = register("oak_chair", new BlockItem(SBCBlocks.OAK_CHAIR, new Item.Properties().stacksTo(64)));
-    public static final Item SPRUCE_CHAIR = register("spruce_chair", new BlockItem(SBCBlocks.SPRUCE_CHAIR, new Item.Properties().stacksTo(64)));
-    public static final Item BIRCH_CHAIR = register("birch_chair", new BlockItem(SBCBlocks.BIRCH_CHAIR, new Item.Properties().stacksTo(64)));
-    public static final Item JUNGLE_CHAIR = register("jungle_chair", new BlockItem(SBCBlocks.JUNGLE_CHAIR, new Item.Properties().stacksTo(64)));
-    public static final Item ACACIA_CHAIR = register("acacia_chair", new BlockItem(SBCBlocks.ACACIA_CHAIR, new Item.Properties().stacksTo(64)));
-    public static final Item DARK_OAK_CHAIR = register("dark_oak_chair", new BlockItem(SBCBlocks.DARK_OAK_CHAIR, new Item.Properties().stacksTo(64)));
-    public static final Item CRIMSON_CHAIR = register("crimson_chair", new BlockItem(SBCBlocks.CRIMSON_CHAIR, new Item.Properties().stacksTo(64)));
-    public static final Item WARPED_CHAIR = register("warped_chair", new BlockItem(SBCBlocks.WARPED_CHAIR, new Item.Properties().stacksTo(64)));
-    public static final Item CHERRY_CHAIR = register("cherry_chair", new BlockItem(SBCBlocks.CHERRY_CHAIR, new Item.Properties().stacksTo(64)));
-    public static final Item BAMBOO_CHAIR = register("bamboo_chair", new BlockItem(SBCBlocks.BAMBOO_CHAIR, new Item.Properties().stacksTo(64)));
-    public static final Item MANGROVE_CHAIR = register("mangrove_chair", new BlockItem(SBCBlocks.MANGROVE_CHAIR, new Item.Properties().stacksTo(64)));
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, StairsButChairs.MOD_ID);
 
-    private static Item register(String id, Item item) {
-        return Registry.register(BuiltInRegistries.ITEM, new ResourceLocation(StairsButChairs.MOD_ID, id), item);
-    }
+    // Oak, Spruce, Birch, Jungle, Acacia, Dark Oak, Crimson, Warped, Bamboo, Cherry, Mangrove
+    public static final RegistryObject<Item> OAK_CHAIR = ITEMS.register("oak_chair", () -> new BlockItem(SBCBlocks.OAK_CHAIR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SPRUCE_CHAIR = ITEMS.register("spruce_chair", () -> new BlockItem(SBCBlocks.SPRUCE_CHAIR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BIRCH_CHAIR = ITEMS.register("birch_chair", () -> new BlockItem(SBCBlocks.BIRCH_CHAIR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> JUNGLE_CHAIR = ITEMS.register("jungle_chair", () -> new BlockItem(SBCBlocks.JUNGLE_CHAIR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ACACIA_CHAIR = ITEMS.register("acacia_chair", () -> new BlockItem(SBCBlocks.ACACIA_CHAIR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DARK_OAK_CHAIR = ITEMS.register("dark_oak_chair", () -> new BlockItem(SBCBlocks.DARK_OAK_CHAIR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CRIMSON_CHAIR = ITEMS.register("crimson_chair", () -> new BlockItem(SBCBlocks.CRIMSON_CHAIR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> WARPED_CHAIR = ITEMS.register("warped_chair", () -> new BlockItem(SBCBlocks.WARPED_CHAIR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> BAMBOO_CHAIR = ITEMS.register("bamboo_chair", () -> new BlockItem(SBCBlocks.BAMBOO_CHAIR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CHERRY_CHAIR = ITEMS.register("cherry_chair", () -> new BlockItem(SBCBlocks.CHERRY_CHAIR.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MANGROVE_CHAIR = ITEMS.register("mangrove_chair", () -> new BlockItem(SBCBlocks.MANGROVE_CHAIR.get(), new Item.Properties()));
+    //}
 }

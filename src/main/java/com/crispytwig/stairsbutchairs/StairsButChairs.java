@@ -1,41 +1,33 @@
 package com.crispytwig.stairsbutchairs;
 
-import com.google.common.reflect.Reflection;
-import com.crispytwig.stairsbutchairs.registry.*;
-import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Items;
+import com.crispytwig.stairsbutchairs.registry.SBCBlocks;
+import com.crispytwig.stairsbutchairs.registry.SBCEntityType;
+import com.crispytwig.stairsbutchairs.registry.SBCItems;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import static com.crispytwig.stairsbutchairs.registry.SBCItems.*;
 
-
-public class StairsButChairs implements ModInitializer {
+@Mod(StairsButChairs.MOD_ID)
+public class StairsButChairs {
 	public static final String MOD_ID = "stairsbutchairs";
 
-	@Override
-	public void onInitialize() {
-		Reflection.initialize(
-				SBCItems.class,
-				SBCBlocks.class,
-				SBCEntityType.class
-		);
-		SBCVanillaIntegration.serverInit();
+	public StairsButChairs() {
+		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		IEventBus eventBus = MinecraftForge.EVENT_BUS;
 
-		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.BUILDING_BLOCKS).register(entries -> {
-			entries.addAfter(Items.OAK_STAIRS, OAK_CHAIR);
-			entries.addAfter(Items.SPRUCE_STAIRS, SPRUCE_CHAIR);
-			entries.addAfter(Items.BIRCH_STAIRS, BIRCH_CHAIR);
-			entries.addAfter(Items.JUNGLE_STAIRS, JUNGLE_CHAIR);
-			entries.addAfter(Items.ACACIA_STAIRS, ACACIA_CHAIR);
-			entries.addAfter(Items.DARK_OAK_STAIRS, DARK_OAK_CHAIR);
-			entries.addAfter(Items.CRIMSON_STAIRS, CRIMSON_CHAIR);
-			entries.addAfter(Items.WARPED_STAIRS, WARPED_CHAIR);
-			entries.addAfter(Items.CHERRY_STAIRS, CHERRY_CHAIR);
-			entries.addAfter(Items.MANGROVE_STAIRS, MANGROVE_CHAIR);
-		});
-		ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(entries -> {
-			entries.addAfter(Items.SCAFFOLDING, BAMBOO_CHAIR);
-		});
+		SBCBlocks.BLOCKS.register(modEventBus);
+		SBCItems.ITEMS.register(modEventBus);
+		SBCEntityType.ENTITY_TYPES.register(modEventBus);
+
+		modEventBus.addListener(this::commonSetup);
+		eventBus.register(this);
 	}
+
+	private void commonSetup(final FMLCommonSetupEvent event) {
+		event.enqueueWork(SBCVanillaIntegration::serverInit);
+	}
+
 }

@@ -28,10 +28,7 @@ public interface SBCTags {
         }
     }
 
-
     class ItemTags {
-//        public static final TagKey<Item> ITEM_TAG = tag("item_tag");
-
 
         private static TagKey<Item> tag(String name) {
             return TagKey.create(BuiltInRegistries.ITEM.key(), new ResourceLocation(StairsButChairs.MOD_ID, name));

@@ -2,30 +2,29 @@ package com.crispytwig.stairsbutchairs.registry;
 
 import com.crispytwig.stairsbutchairs.StairsButChairs;
 import com.crispytwig.stairsbutchairs.blocks.StairChairBlock;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
+@Mod.EventBusSubscriber(modid = StairsButChairs.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class SBCBlocks {
 
-    public static final Block OAK_CHAIR = register("oak_chair", new StairChairBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).noOcclusion()));
-    public static final Block SPRUCE_CHAIR = register("spruce_chair", new StairChairBlock(FabricBlockSettings.copyOf(Blocks.SPRUCE_PLANKS).noOcclusion()));
-    public static final Block BIRCH_CHAIR = register("birch_chair", new StairChairBlock(FabricBlockSettings.copyOf(Blocks.BIRCH_PLANKS).noOcclusion()));
-    public static final Block JUNGLE_CHAIR = register("jungle_chair", new StairChairBlock(FabricBlockSettings.copyOf(Blocks.JUNGLE_PLANKS).noOcclusion()));
-    public static final Block ACACIA_CHAIR = register("acacia_chair", new StairChairBlock(FabricBlockSettings.copyOf(Blocks.ACACIA_PLANKS).noOcclusion()));
-    public static final Block DARK_OAK_CHAIR = register("dark_oak_chair", new StairChairBlock(FabricBlockSettings.copyOf(Blocks.DARK_OAK_PLANKS).noOcclusion()));
-    public static final Block CRIMSON_CHAIR = register("crimson_chair", new StairChairBlock(FabricBlockSettings.copyOf(Blocks.CRIMSON_PLANKS).noOcclusion()));
-    public static final Block WARPED_CHAIR = register("warped_chair", new StairChairBlock(FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS).noOcclusion()));
-    public static final Block CHERRY_CHAIR = register("cherry_chair", new StairChairBlock(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS).noOcclusion()));
-    public static final Block BAMBOO_CHAIR = register("bamboo_chair", new StairChairBlock(FabricBlockSettings.create().noOcclusion().sound(SoundType.SCAFFOLDING).dynamicShape().isValidSpawn(Blocks::never).pushReaction(PushReaction.DESTROY).isRedstoneConductor(Blocks::never)));
-    public static final Block MANGROVE_CHAIR = register("mangrove_chair", new StairChairBlock(FabricBlockSettings.copyOf(Blocks.MANGROVE_PLANKS).noOcclusion()));
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, StairsButChairs.MOD_ID);
 
-    private static Block register(String id, Block block) {
-        return Registry.register(BuiltInRegistries.BLOCK, new ResourceLocation(StairsButChairs.MOD_ID, id), block);
-    }
+    public static final RegistryObject<Block> OAK_CHAIR = BLOCKS.register("oak_chair", () -> new StairChairBlock(BlockBehaviour.Properties.copy(Blocks.OAK_STAIRS).noOcclusion()));
+    public static final RegistryObject<Block> SPRUCE_CHAIR = BLOCKS.register("spruce_chair", () -> new StairChairBlock(BlockBehaviour.Properties.copy(Blocks.SPRUCE_STAIRS).noOcclusion()));
+    public static final RegistryObject<Block> BIRCH_CHAIR = BLOCKS.register("birch_chair", () -> new StairChairBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_STAIRS).noOcclusion()));
+    public static final RegistryObject<Block> JUNGLE_CHAIR = BLOCKS.register("jungle_chair", () -> new StairChairBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_STAIRS).noOcclusion()));
+    public static final RegistryObject<Block> ACACIA_CHAIR = BLOCKS.register("acacia_chair", () -> new StairChairBlock(BlockBehaviour.Properties.copy(Blocks.ACACIA_STAIRS).noOcclusion()));
+    public static final RegistryObject<Block> DARK_OAK_CHAIR = BLOCKS.register("dark_oak_chair", () -> new StairChairBlock(BlockBehaviour.Properties.copy(Blocks.DARK_OAK_STAIRS).noOcclusion()));
+    public static final RegistryObject<Block> CRIMSON_CHAIR = BLOCKS.register("crimson_chair", () -> new StairChairBlock(BlockBehaviour.Properties.copy(Blocks.CRIMSON_STAIRS).noOcclusion()));
+    public static final RegistryObject<Block> WARPED_CHAIR = BLOCKS.register("warped_chair", () -> new StairChairBlock(BlockBehaviour.Properties.copy(Blocks.WARPED_STAIRS).noOcclusion()));
+    public static final RegistryObject<Block> BAMBOO_CHAIR = BLOCKS.register("bamboo_chair", () -> new StairChairBlock(BlockBehaviour.Properties.copy(Blocks.BAMBOO_STAIRS).noOcclusion()));
+    public static final RegistryObject<Block> CHERRY_CHAIR = BLOCKS.register("cherry_chair", () -> new StairChairBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_STAIRS).noOcclusion()));
+    public static final RegistryObject<Block> MANGROVE_CHAIR = BLOCKS.register("mangrove_chair", () -> new StairChairBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_STAIRS).noOcclusion()));
+
 }
